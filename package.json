@@ -1,4 +1,46 @@
 {
   "name": "@pulsarynthakit/workflows",
+  "description": "⚙️ Workflows execution engine.",
+  "keywords": [
+    "@pulsarynthakit:ci-cd",
+    "@pulsarynthakit:composite-actions",
+    "@pulsarynthakit:github-actions",
+    "@pulsarynthakit:workflows"
+  ],
+  "homepage": "https://github.com/pulsarynthakit/workflows#readme",
+  "bugs": "https://github.com/pulsarynthakit/workflows/issues",
+  "license": "MIT",
+  "author": {
+    "name": "pulsarynthakit",
+    "email": "pulsarynthakit@protonmail.com",
+    "url": "https://github.com/pulsarynthakit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pulsarynthakit/workflows.git"
+  },
+  "funding": "https://github.com/sponsors/pulsarynthakit",
+  "type": "module",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsdown",
+    "fmt:check": "oxfmt . --check",
+    "fmt:fix": "oxfmt .",
+    "check-types": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@actions/core": "^3.0.1"
+  },
+  "devDependencies": {
+    "@tsconfig/node-ts": "^23.6.4",
+    "@tsconfig/node26": "^26.0.0",
+    "@tsconfig/recommended": "^1.0.13",
+    "@types/node": "^25.9.2",
+    "oxfmt": "^0.53.0",
+    "tsdown": "^0.22.2",
+    "typescript": "^6.0.3"
+  },
   "packageManager": "yarn@4.16.0"
 }
