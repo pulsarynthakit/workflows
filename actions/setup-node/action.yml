@@ -1,0 +1,42 @@
+name: Setup Node.js
+description: "Installs and configures Node.js"
+author: "pulsarynthakit"
+
+branding:
+  icon: "download"
+  color: "green"
+
+inputs:
+  node-version:
+    description: "Node.js version to install"
+    required: false
+
+outputs:
+  node-version:
+    description: "Resolved Node.js version"
+    value: ${{ steps.resolve.outputs.node-version }}
+
+runs:
+  using: composite
+  steps:
+    - name: Resolve Node.js version
+      id: resolve
+      shell: bash
+      run: |
+        if [ -n "${{ inputs.node-version }}" ]; then
+          version="${{ inputs.node-version }}"
+        else
+          version=$(node ./dist/get-node-version.mjs)
+        fi
+
+        echo "node-version=$version" >> "$GITHUB_OUTPUT"
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v6
+      with:
+        node-version: ${{ steps.resolve.outputs.node-version }}
+
+    - name: Verify Node.js installation
+      shell: bash
+      run: |
+        echo "✅ Node.js installed: $(node --version)"
